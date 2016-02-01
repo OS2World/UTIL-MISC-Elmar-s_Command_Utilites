@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if [ "$1" == "-h" -o "$1" == "--help" ]; then
+  echo "saveextattr X:\ X:\eas"
+  exit 0;
+fi
+
+drive="$1"; target="${2%/}"; target="${target%\\}"
+
+if [ -d "$target" ]; then
+  echo "target directory already exist; exiting."
+  exit 1;
+fi
+
+let errors=0
+lsa -1ruc "$drive" | while read file; do
+  dir="$(dirname "$file")"; dir="${dir#?:}"
+  echo mkdir -p "$target${dir}"
+  echo eautil "$file" "$target/$dir${dir:+/}$file"
+  if [ "$?" -ne 0 ]; then
+    echo eautil "$file" "$target\\$dir${dir:+\\}$file" >&2
+    let errors+=1
+  fi
+  break;
+done
+echo "completed with $errors errors."
+echo
+
+

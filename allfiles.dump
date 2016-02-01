@@ -1,0 +1,90 @@
+/* which for OS/2 */
+call RxFuncAdd SysLoadFuncs,RexxUtil,SysLoadFuncs
+call SysLoadFuncs
+
+parse arg args
+avlopts='--help --files --dirs --both x n'; call prepareavlopts
+opts=''; wasbadopt=0;
+DO forever
+  parse var args opt rargs
+  IF substr(opt,1,1)\=='-' THEN LEAVE
+  IF substr(opt,1,2)=='--' THEN DO
+    IF \ In(opt,avlopts) THEN call WarnBadOpt substr(opt,2)
+    opts=opts||substr(opt,3,1)
+  END; ELSE DO
+    DO j=2 TO length(opt);
+      IF \ In(substr(opt,j,1),avlopts) THEN call WarnBadOpt substr(opt,j,1); END;
+    opts=opts||substr(opt,2)
+  END;
+  args=rargs
+END
+IF wasbadopt THEN exit
+
+findopt='B'
+prefix='.\'
+IF Pos('f',opts)>0 THEN findopt='F'
+IF Pos('d',opts)>0 THEN findopt='D'
+IF ( Pos('f',opts)>0 & Pos('d',opts)>0 ) | Pos('b',opts)>0 THEN findopt='B'
+IF Pos('x',opts)<=0 THEN findopt=findopt||'O'
+IF Pos('n',opts)>0 THEN prefix=''
+IF Pos('h',opts)>0 THEN call Help
+/* -xn parse from column 35 on: filename */
+
+actdir=directory()||'\'
+argg.0=1
+argg.1=args
+call Main argg.;
+exit
+
+Main:
+  push i; push h; push subdirs.0; push args.0;
+  /* not restored: subdirs.*, thissearch, args.*/
+  use arg args.; DO h=1 TO args.0; push args.h; END;
+  DO h=1 TO args.0;
+    parse pull thissearch;
+    /*parse var args thissearch args*/
+    IF thissearch=='' THEN thissearch='.'
+    if right(thissearch,1)\=='\' then thissearch=thissearch||'\'
+    /*say '>>' thissearch*/
+    call SysFileTree thissearch, files, findopt;
+    DO i=1 TO files.0;
+      IF translate(substr(files.i,1,length(actdir)))==translate(actdir)
+        THEN say prefix||substr(files.i,length(actdir)+1);
+        ELSE say files.i;
+    END;
+    call SysFileTree thissearch, subdirs, 'DO';
+    DO i=1 TO subdirs.0; push subdirs.i; END; actsubdir.0=1;
+    DO i=1 TO subdirs.0
+      parse pull actsubdir.1
+      call Main actsubdir.1
+    END;
+  END;
+  pull args.0; pull subdirs.0; pull h; pull i;
+return
+
+
+Help:
+  parse source os what me; me=filespec('name',me); me=substr(me,1,LastPos('.',me)-1)
+  mepad=copies(' ',length(me))
+  say me "--dirs / --files / --both ... show only files/directories"
+  say mepad "-x ... do not only output files but also their attributes"
+  say mepad "-n ... do not prefix with .\"
+exit
+
+WarnBadOpt:
+  red='1B'x'[0;31m'; black='1B'x'[0m';
+  call LineOut 'STDERR:', red'option -'arg(1)' not known.'black
+  wasbadopt=1
+return
+
+prepareavlopts:
+  push nopts; push i;
+  nopts=words(avlopts)
+  DO i=1 TO nopts;
+    IF substr(word(avlopts,i),1,2)=='--' THEN avlopts=avlopts substr(word(avlopts,i),3,1); END;
+  pull i; pull nopts;
+return
+
+::requires common.rlb
+
+

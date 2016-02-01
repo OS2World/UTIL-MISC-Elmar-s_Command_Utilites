@@ -1,0 +1,88 @@
+/* Option Value Parsing for REXX */
+/*                           Elmar Stellnberger, 12.01.2012, available under GPL */
+/* .local~avlopts='--help --files --dirs --both x n --absolute'; */
+/* .local~avlopts ... available options */
+/* implicit input: args, avlopts */
+/* implicit output: opts, wasbadopt */
+
+/* call PrepateAvlOpts: .local~avlopts um gleichbuchstabige Kurzoptionen erg„nzen */
+/* call ParseOpts: io .local~args, o: .local~opts (Einbuchstabenliste), o:.local~wasbadopt */
+/* call SplitArgs: i: .local~args, o: .local~argary (quote parsing) */
+.local~wasbadopt = 0;
+
+/* parse options and output list of one-letter-beginning-options; remaining args -> args */
+::routine ParseOpts public
+  avlopts=.local~avlopts; args=.local~args; 
+  opts=''; wasbadopt=0;
+  DO forever
+    parse var args opt rargs
+    IF substr(opt,1,1)\=='-' THEN LEAVE
+    IF substr(opt,1,2)=='--' THEN DO
+      IF \ In(opt,avlopts) THEN call WarnBadOpt substr(opt,2)
+      opts=opts||substr(opt,3,1)
+    END; ELSE DO
+      DO j=2 TO length(opt);
+        IF \ In(substr(opt,j,1),avlopts) THEN call WarnBadOpt substr(opt,j,1); END;
+      opts=opts||substr(opt,2)
+    END;
+    args=rargs
+  END
+  .local~opts=opts; .local~args=args;
+return
+
+::routine WarnBadOpt public
+  red='1B'x'[0;31m'; black='1B'x'[0m';
+  call LineOut 'STDERR:', red'option -'arg(1)' not known.'black
+  .local~wasbadopt=1
+return
+
+/* put one lettered short option in ~avlopts for every long option*/
+::routine PrepareAvlOpts public
+  avlopts=.local~avlopts; 
+  /*push nopts; push i;*/
+  nopts=words(avlopts)
+  DO i=1 TO nopts;
+    IF substr(word(avlopts,i),1,2)=='--' THEN avlopts=avlopts substr(word(avlopts,i),3,1); END;
+  /*pull i; pull nopts;*/
+  .local~avlopts=avlopts;
+return
+
+/* "aaa""bb b" -> |aa"bb b|,  aabb -> |aabb|  ("|" imaginary) */
+::routine SplitArgs public
+  args=.local~args; nargs=0;
+  DO WHILE args\='';
+    args=strip(args,'leading');
+    IF left(args,1)\='"' THEN
+      parse var args thisarg args
+    ELSE DO
+      p = Pos('"',args,2);
+      DO WHILE substr(args,p+1,1)=='"';
+        args=delstr(args,p+1,1);
+        p= Pos('"',args,p+1);
+      END;
+      thisarg = substr(args,2,p-2);
+      args = substr(args,p+1);
+    END;
+    nargs=nargs+1; argary.nargs=thisarg;
+  END;
+  argary.0=nargs
+  .local~argary=argary.
+return
+
+::routine in public
+  /*push elm;push j;*/
+  parse arg elm; result=0;
+  DO j=1 TO words(arg(2));
+    IF elm==word(arg(2),j) THEN DO result=1;LEAVE; END
+  END
+  /*pull j;parse pull elm;*/
+return result
+
+::routine FileExists public
+  call SysFileTree arg(1), files, 'FO'
+return files.0 > 0
+
+::routine DirectoryExists public
+  call SysFileTree arg(1), files, 'DO'
+return files.0 > 0
+

@@ -1,0 +1,150 @@
+
+                    Process and Thread Information
+
+          Parent
+Process   Process   Session   Process   Thread
+  ID        ID        ID       Name       ID    Priority   Block ID   State
+
+ 002D      0000       16      E:\CUPS\SBIN\CUPSD.EXE    01      0200     0001002D   Block
+                                          02      0201     FDEAFA3C   Block
+ 0024      0000       10      C:\OS2\USBMON.EXE    01      0200     07580096   Block
+                                          02      0200     FDBA1DFC   Block
+ 001E      0000       01      C:\OS2\DRIVERS\SNAP\SDDDAEMN.EXE    01      0300     FA0A5CA4   Block
+                                          02      0300     FDCC63A4   Block
+                                          03      0300     FDEAFAB8   Block
+                                          04      0300     FDEAA024   Block
+ 001C      0000       00      E:\APPS\ISOFS\ISOFSDMN.EXE    01      0410     FFFE0508   Block
+ 001B      0000       00      E:\APPS\NETDRIVE\NDCTL.EXE    01      0400     FFF3FB04   Block
+                                          02      0400     FAB3929C   Block
+                                          03      0400     FAB392DC   Block
+ 001A      0000       00      C:\MPTN\BIN\VDOSCTL.EXE    01      0300     FDBA9F68   Block
+ 0010      0000       00      C:\MPTN\BIN\CNTRL.EXE    01      0304     FFF3FB04   Block
+                                          02      0304     F5A0BC80   Block
+                                          03      0304     F5A0BC50   Block
+                                          04      0304     F591D190   Block
+                                          05      0304     F275002A   Block
+ 000F      0000       00      C:\IBMCOM\LANMSGEX.EXE    01      0200     FFFEF636   Block
+ 000A      0000       00      C:\MMOS2\MIDIDMON.EXE    01      031F     12980CDC   Block
+ 0007      0000       00      C:\OS2\SMSTART.EXE    01      0200     FFCA0007   Block
+ 000E      0007       00      C:\OS2\FFST.EXE    01      0200     0758003E   Block
+ 000D      0007       00      C:\OS2\ERLOGGER.EXE    01      021F     07580012   Block
+ 000C      0007       00      C:\OS2\DMISL.EXE    01      0200     FFFE0337   Block
+                                          02      0200     FFFE032F   Block
+ 0006      0000       00      C:\OS2\CACHEF32.EXE    01      0200     FFF3FB04   Block
+                                          02      031F     0418E888   Block
+                                          03      0100     0418E968   Block
+ 0004      0000       00      C:\OS2\BOOT\GSVDAEMN.EXE    01      041F     BEEFBEEF   Block
+ 0001      0000       00      (kernel)    01      0100     FFED74E0   Block
+                                          02      0200     FFF3E957   Block
+                                          03      0200     FFF19111   Block
+                                          04      0300     FFED6774   Block
+                                          05      0300     FFED7778   Block
+                                          07      031E     0A001328   Block
+ 001D      0001       01      C:\OS2\PMSHELL.EXE    01      0200     FDC71C00   Block
+                                          02      0300     051802E8   Block
+                                          03      0300     FFCA001D   Block
+                                          04      0300     FFFD002A   Block
+                                          05      0300     FFFD002B   Block
+                                          06      0300     0A000F2A   Block
+                                          07      031E     0A001342   Block
+                                          08      0200     FDC93270   Block
+                                          09      0200     FDE2BEFC   Block
+                                          0A      031E     FDE4CC84   Block
+                                          0B      041F     FDC71C40   Block
+                                          0C      0200     5262942E   Block
+                                          0D      0200     FDC4F67C   Block
+                                          0E      0200     0B900319   Block
+                                          0F      0200     FDCD7DC0   Block
+                                          10      0200     FFFE0CC4   Block
+                                          11      0200     FDCD7DC0   Block
+                                          12      0200     FDC4F11C   Block
+                                          13      021F     FDC4F15C   Block
+                                          14      0200     FFFD003A   Block
+                                          15      0300     FFFE0D25   Block
+                                          16      0300     FFFE0D27   Block
+                                          17      0300     FFFE0D22   Block
+                                          18      0304     FFFD003E   Block
+                                          19      0304     0A000F1C   Block
+                                          1A      0200     FFFD0040   Block
+                                          1B      0301     FFFE0D28   Block
+                                          1C      0300     FFFE0D29   Block
+                                          1D      0200     FD4170B8   Block
+                                          1E      0400     F74ADD58   Block
+                                          1F      0200     FDB98B9C   Block
+                                          20      0304     FDF05948   Block
+ 0054      001D       14      C:\OS2\APPS\EPM.EXE    01      0200     FDEE3A24   Ready
+                                          02      0200     FDF0AD1C   Block
+ 0049      001D       1A      C:\OS2\CMD.EXE    01      0200     FFCA0049   Block
+ 004B      0049       1A      C:\PROGRAMME\4OS2\4OS2.EXE    01      0200     FFCA004B   Block
+ 0062      004B       1A      C:\OS2\PSTAT.EXE    01      0200     00000000  Running
+ 0032      001D       16      C:\OS2\CCHMAIN.EXE    01      040A     FDEC6E14   Block
+                                          02      0200     FDEC7318   Block
+                                          03      0200     FDEC6E94   Block
+                                          04      0200     FDEC6E7C   Block
+                                          05      0205     FDEC6E44   Block
+ 002F      001D       15      C:\OS2\CMD.EXE    01      0200     FFCA002F   Block
+ 0030      002F       15      C:\TCPIP\BIN\SENDMAIL.EXE    01      0200     00010030   Block
+                                          02      030A     FDEA9734   Block
+                                          03      0200     FFF3FB04   Block
+ 0028      001D       13      C:\PROGRAMME\FIREFOX-10.0.10\FIREFOX.EXE    01      0200     FDEA7DEC   Ready
+                                          02      0200     FDEADA2C   Block
+                                          03      0200     FDEAD3E4   Block
+                                          04      0200     00040028   Block
+                                          05      0200     FDEB3F54   Block
+                                          06      0200     FDEB3BFC   Block
+                                          07      0200     FDED2480   Block
+                                          08      0200     FDEB36BC   Block
+                                          09      0200     FDEB4BC8   Block
+                                          0A      0200     FDEC6B10   Block
+                                          0B      0200     FDECA644   Block
+                                          0C      0200     FDECA654   Block
+                                          0D      0200     FDEB54D4   Block
+                                          0E      0200     FDECAA6C   Block
+                                          0F      0200     FEB9617C   Block
+                                          10      0200     FDECAD20   Block
+                                          11      0200     FDF05B34   Block
+                                          12      0200     FDF06F58   Block
+                                          13      0200     FDE9ED90   Block
+                                          14      0200     FDC60F14   Block
+                                          16      0200     FDC2DBC0   Block
+ 0027      001D       12      C:\PROGRAMME\LSWITCHER\LSWITCH.EXE    01      031F     FDEA5184   Block
+                                          02      031F     FDEA8838   Block
+ 0023      001D       11      C:\OS2\PMSHELL.EXE    01      0200     FDC2DBE4   Block
+                                          02      0300     FDCE8900   Block
+                                          03      030A     FDCE88E8   Block
+                                          04      0300     FDBFA528   Block
+                                          05      0300     FDBFA4E0   Block
+                                          06      031E     EF5E6C38   Block
+                                          07      0400     FDE8BF04   Block
+                                          09      0200     FDC1CEE8   Block
+                                          0A      0200     075800C2   Block
+                                          0B      0200     FDE9BCA8   Block
+                                          0C      0400     FDE9E2F8   Block
+                                          0D      0200     FDE9D220   Block
+                                          0E      021F     2F981C00   Ready
+                                          0F      0200     FFFE1048   Block
+                                          10      0200     FDE9D59C   Block
+                                          11      0200     FDE9D5BC   Block
+                                          13      0300     FDEA0280   Block
+                                          14      0400     03151964   Block
+                                          15      0400     FDE9F11C   Block
+ 0022      001D       10      C:\OS2\PMSPOOL.EXE    01      0200     FFF3FB04   Block
+                                          02      0200     FDCC636C   Block
+                                          03      0200     2F48000E   Block
+                                          04      0200     FDCC635C   Block
+                                          05      0200     FDC714C4   Block
+                                          06      0200     FDC714B4   Block
+                                          07      0200     FDC0BB74   Block
+                                          08      0200     FDBA8B8C   Block
+                                          09      0200     FEB96268   Block
+                                          0A      0200     FEB96220   Block
+ 0020      001D       00      C:\OS2\SYSTEM\HARDERR.EXE    01      0300     0A000F46   Block
+                                          02      0300     0A00125A   Block
+                                          03      0300     0A001268   Block
+ 001F      001D       FF0      VDM         01      0300     FDCF9834   Block
+ 0009      0001       00      C:\BONUSPAK\RS231B\PPM731B.EXE    01      031F     FFFE02D2   Block
+                                          02      031F     FFFEFFFF   Block
+                                          03      031F     FFFEFFFF   Block
+                                          04      031F     FDE64FE4   Block
+                                          05      031F     FDE0955C   Block
+ 0002      0001       00      SystmVDM    01      031F     06C8428A   Block
