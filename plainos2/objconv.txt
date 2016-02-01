@@ -1,0 +1,53 @@
+
+Object file converter version 2.16 for x86 and x86-64 platforms.
+Copyright (c) 2012 by Agner Fog. Gnu General Public License.
+
+Usage: objconv options inputfile [outputfile]
+
+Options:
+-fXXX[SS]  Output file format XXX, word size SS. Supported formats:
+           PE, COFF, ELF, OMF, MACHO
+
+-fasm      Disassemble file (-fmasm, -fnasm, -fyasm, -fgasm)
+
+-dXXX      Dump file contents to console.
+           Values of XXX (can be combined):
+           f: File header, h: section Headers, s: Symbol table,
+           r: Relocation table, n: string table.
+
+-xs        Strip exception handling info and other incompatible info.
+-xp        Preserve exception handling info and other incompatible info.
+
+-nu        change symbol Name Underscores to the default for the target format.
+-nu-       remove Underscores from symbol Names.
+-nu+       add Underscores to symbol Names.
+-nd        replace Dot/underscore in section names.
+-nr:N1:N2  Replace symbol Name N1 with N2.
+-ar:N1:N2  make Alias N2 for existing public name N1.
+-np:N1:N2  Replace symbol Prefix N1 with N2.
+-nw:N1     make public symbol Name N1 Weak (ELF and MAC64 only).
+-nl:N1     make public symbol Name N1 Local (invisible).
+
+-lx        eXtract all members from Library.
+-lx:N1:N2  eXtract member N1 from Library to file N2.
+-ld:N1     Delete member N1 from Library.
+-la:N1:N2  Add object file N1 to Library as member N2.
+           All library options need -fXXX option.
+           Alternative: -lib LIBRARYNAME OBJECTFILENAMES.
+
+-vN        Verbose options. Values of N:
+           0: Silent, 1: Print file names and types, 2: Tell about conversions.
+
+-wdNNN     Disable Warning NNN.
+-weNNN     treat Warning NNN as Error. -wex: treat all warnings as errors.
+-edNNN     Disable Error number NNN.
+-ewNNN     treat Error number NNN as Warning.
+
+-h         Print this help screen.
+
+@RFILE     Read additional options from response file RFILE.
+
+
+Example:
+objconv -felf32 -nu filename.obj filename.o
+

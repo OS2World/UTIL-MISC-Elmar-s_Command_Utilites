@@ -1,0 +1,43 @@
+*** LIB=e:\apps\watcom\lib386\os2\;e:\usr\lib;C:\javaos2\lib;
+*** Linker     : wl.exe
+*** Linker type: wlink
+emxomfld: info: converting obj E:\home\elm\C\shutdn2.o to OMF.
+emxomfld: info: convert result 'C:/tcpip/tmp\ldconv_shutdn2_o_735246e5a0157288.obj'.
+*** Invoking weak prelinker with flags 2001.
+weakld: info: linker created
+weakld: info: adding object C:\tcpip\tmp\ldconv_shutdn2_o_735246e5a0157288.obj.
+weakld: info: Reading @0x00000000 C:\tcpip\tmp\ldconv_shutdn2_o_735246e5a0157288.obj
+weakld: info: adding library E:\Apps\Watcom\lib386\os2\os2386.lib
+weakld: info: adding library E:\usr\lib\libend.lib
+weakld: info: **** PASS ONE ****
+weakld: info: **** LIBRARY SEARCH ****
+weakld: info: -- Begin Library Pass --
+weakld: info:   Searching E:\Apps\Watcom\lib386\os2\os2386.lib
+weakld: info: Reading @0x00003810 E:\Apps\Watcom\lib386\os2\os2386.lib(DosExit)
+weakld: info: Reading @0x00004630 E:\Apps\Watcom\lib386\os2\os2386.lib(DosWrite)
+weakld: info:   Searching E:\usr\lib\libend.lib
+weakld: info: Generating object file 'C:/tcpip/tmp\wk735246e5a0179568.obj' for weak aliases.
+weakld: info: cWeakAliases=-32 cMaxObjExts=3 cMaxLibExts=1
+weakld: info: destroying linker instance
+*** Weak prelinker done
+*** Invoking Linker
+ wl.exe @ldU5hv05.
+--- Response file ldU5hv05:
+FORMAT OS2 LX PMCompatible
+NAME 'shutdn.exe'
+DEBUG HLL
+OPTION QUIET
+OPTION OSNAME='OS/2 EMX'
+OPTION CASEEXACT
+OPTION STACK=0x100000
+OPTION OFFSET=0x10000
+OPTION STUB='E:\USR\BIN\os2stub.bin'
+FILE 'C:/tcpip/tmp\ldconv_shutdn2_o_735246e5a0157288.obj'
+FILE 'C:/tcpip/tmp/wk735246e5a0179568.obj'
+LIBRARY 'E:\Apps\Watcom\lib386\os2\os2386.lib'
+LIBRARY 'E:\usr\lib\libend.lib'
+
+--- End of Response File
+Warning! W1014: stack segment not found
+Warning! W1023: no starting address found, using 0001:00000000
+*** Return from Linker is 0

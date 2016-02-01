@@ -1,0 +1,46 @@
+emxomfld 0.6.5 (Bird Build 2012-03-23 03:21 (csd5))
+Copyright (c) 1992-1996 by Eberhard Mattes
+Copyright (c) 2003 by InnoTek Systemberatung GmbH
+Copyright (c) 2003-2006 by Knut St. Osmundsen
+
+Usage: emxomfld -o <file> [-l <lib>] [-L <libdir>] [-T <base>] [-igtsS]
+           [-Zexe] [-Zdll] [-Zsym] [-Zstack <size>] [-Zmap[=<map_file>]]
+           [-Z[no-]autoconv] [-Zdll-search] [-O <option>] [-static]
+           [-non_shared] [-Bstatic] [-dn] [call_shared] [-Bshared]
+           [-dy] <file>...
+
+Options:
+ -Zno-autoconv / -Zautoconv:
+    Turns off/on the automatic conversion of a.out libs and objs.
+    default: -Zautoconv
+ -Bstatic, -non_shared, -dn, -static:
+    Link with static libraries.
+    The search order is then changed to: lib<name>_s.lib, <name>_s.lib,
+    lib<name>.lib, <name>.lib
+ -Bshared, -call_shared, -dy:
+    Link with shared libraries. This is default.
+    The search order is then changed to: lib<name>_dll.lib, <name>_dll.lib,
+    lib<name>.lib, <name>.lib, <name>.dll, lib<name>_s.lib, <name>_s.lib.
+ -Zdll-search:
+    Enables dlls as valid libraries from shared linking. (default disabled)
+ -Zsym:    Invoke mapsym.cmd on the mapfile to produce a .sym file. Requires -Zmap.
+
+Environment variables:
+  EMXOMFLD_TYPE:
+    The type of linker we're using. Values: WLINK, VAC365, VAC308, LINK386.
+        WLINK    wlink.exe from Open Watcom v1.5 or later.
+        VAC365   ilink.exe from IBM C and C++ Compilers for OS/2 v3.6 or later.
+        VAC308   ilink.exe from Visual Age for C++ v3.08.
+        LINK386  link386 form OS/2 install or DDK.
+  EMXOMFLD_LINKER:
+    Name of the linker to use and optionally extra parameters. Spaces in the
+    linker name or path is not supported. Quotes are not supported either.
+The default values for these two variables are VAC365 and ilink.exe.
+  EMXOMFLD_RC_TYPE:
+    The type of resource compiler we're using. Values: RC,WRC.
+        RC       rc.exe as shipped with OS/2 or found in the Toolkit
+        WRC      wrc.exe from Open Watcom v1.6 or later.
+  EMXOMFLD_RC:
+    Name of the resource compiler to use and optionally extra parameters.
+    Spaces or quotes in the name or path are not supported.
+The default values for these two variables are RC and rc.exe.

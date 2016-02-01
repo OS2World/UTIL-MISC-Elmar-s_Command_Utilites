@@ -1,0 +1,7 @@
+#define EXPORTED __attribute__((__visibility__("default")))
+#pragma weak WEAK$ZERO
+//int WEAK$ZERO(void) { return 0; }
+
+//#pragma GCC visibility push(default)
+
+
